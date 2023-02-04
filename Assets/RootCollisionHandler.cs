@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,14 @@ public class RootCollisionHandler : MonoBehaviour
     public PlayerRoot PlayerRoot;
     PlayerHead playerHead;
 
+    float minDistance = 10f;
+
+    List<float> rootXs= new List<float>();
+    private void Start()
+    {
+        rootXs.Add(PlayerRoot.transform.position.x);
+    }
+
     private void NewRoot()
     {
         StopPlaying();
@@ -31,20 +40,35 @@ public class RootCollisionHandler : MonoBehaviour
     {
         StopPlaying();
 
-        var location = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), groundLevel.position.y, 0);
-        Instantiate(TreePrefab, location, Quaternion.identity);
-        PlayerRoot = Instantiate(PlayerRootPrefab, location, Quaternion.identity);
+        Vector3 bestLocation = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), groundLevel.position.y, 0);
+        float bestLocationDist = 0;
+        for(int i = 0; i < 10; i++)
+        {
+            var location = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), groundLevel.position.y, 0);
+            float dist = ClosestDistanceToNeighbor(location.x);
+            if(dist > minDistance)
+            {
+                bestLocation = location;
+                break;
+            }
+
+            if (bestLocationDist < dist)
+            {
+                bestLocation = location;
+                bestLocationDist = dist;
+            }
+        }
+
+        Instantiate(TreePrefab, bestLocation, Quaternion.identity);
+        PlayerRoot = Instantiate(PlayerRootPrefab, bestLocation, Quaternion.identity);
+
+        rootXs.Add(bestLocation.x);
         playerHead = GetComponent<PlayerHead>();
         playerHead.PlayerRoot = PlayerRoot;
         int numOfRoots = int.Parse(textMeshPro.text);
         textMeshPro.text = (numOfRoots + 1).ToString();
 
         Invoke("StartPlaying", 0.5f);
-    }
-
-    private void Start()
-    {
-        //SpawnRoot();
     }
 
     private void HitDeadEnd()
@@ -133,5 +157,19 @@ public class RootCollisionHandler : MonoBehaviour
             Debug.Log("Exit the allowed screen zone");
             HitDeadEnd();
         }
+    }
+
+    private float ClosestDistanceToNeighbor(float newRootX)
+    {
+        float closest = 1000;
+        foreach(float pos in rootXs)
+        {
+            float dist = Math.Abs(pos - newRootX);
+            if (dist < closest)
+            {
+                closest = dist;
+            }
+        }
+        return closest;
     }
 }
