@@ -8,6 +8,7 @@ TagManager:
   - Layer2Ground
   - Layer3Ground
   - Water
+  - Root
   layers:
   - Default
   - TransparentFX

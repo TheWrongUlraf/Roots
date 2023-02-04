@@ -10,8 +10,16 @@ public class TestScript : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Root")
+        {
+            Debug.Log("Collided with root");
+        }
+    }
+
     // Update is called once per frame
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Layer1Ground")
         {

@@ -62,10 +62,8 @@ public class PlayerRoot : MonoBehaviour
             isHole = true;
             curHoleSpacing = 0;
 
-            MeshCollider meshCollider = curSection.AddComponent<MeshCollider>();
-            Mesh mesh = new Mesh();
-            curSection.BakeMesh(mesh, true);
-            meshCollider.sharedMesh = mesh;
+            EdgeCollider2D edgeCollider = curSection.AddComponent<EdgeCollider2D>();
+            edgeCollider.CreateMesh(true, true);
 
             curSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
             curSection.enabled= false;

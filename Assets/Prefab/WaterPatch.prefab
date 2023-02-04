@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5443435276287886236}
   - component: {fileID: 5242611983376281562}
   - component: {fileID: 4450294056704725951}
+  - component: {fileID: 7476700262645544502}
   m_Layer: 0
   m_Name: WaterPatch
   m_TagString: Water
@@ -307,3 +308,24 @@ PolygonCollider2D:
       - {x: -7.1211004, y: -5.9718056}
       - {x: -7.3331423, y: -5.969982}
       - {x: -7.7791348, y: -5.7908707}
+--- !u!50 &7476700262645544502
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3034022804976178274}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
