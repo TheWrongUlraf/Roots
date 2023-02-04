@@ -85,6 +85,7 @@ public class PlayerRoot : MonoBehaviour
     {
         GameObject curLineSegmentParent = new GameObject("LineSegment");
         curLineSegmentParent.transform.parent = gameObject.transform;
+        curLineSegmentParent.tag = "Root";
         LineRenderer nextSection = curLineSegmentParent.AddComponent<LineRenderer>();
 
         nextSection.material = material;

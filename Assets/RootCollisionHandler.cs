@@ -40,17 +40,18 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Root")
-        {
-            Debug.Log("Collided with root");
-            HitDeadEnd();
-        }
+        
     }
 
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Layer1Ground")
+        if (other.gameObject.tag == "Root")
+        {
+            Debug.Log("Collided with root");
+            HitDeadEnd();
+        }
+        else if (other.gameObject.tag == "Layer1Ground")
         {
             Debug.Log("Entered ground layer 1");
             if (layerPremission < 1)
@@ -78,6 +79,10 @@ public class RootCollisionHandler : MonoBehaviour
         {
             Debug.Log("Yummy yummy");
             GotWater();
+        }
+        else
+        {
+            Debug.Log(other.name);
         }
     }
 
