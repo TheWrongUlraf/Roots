@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943a5d52320aa0349a5af4cd5880a3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 1619082b0f018dd449641900e48a19e9, type: 2}
   curSection: {fileID: 0}
   startPoint: {x: 0, y: 0, z: 0}
   isRunning: 1
-  lineColor: {r: 0.122641504, g: 0.069805376, b: 0.016969252, a: 1}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &4896252505262883287
 Rigidbody2D:
   serializedVersion: 4

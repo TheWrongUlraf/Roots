@@ -89,6 +89,7 @@ public class PlayerRoot : MonoBehaviour
         LineRenderer nextSection = curLineSegmentParent.AddComponent<LineRenderer>();
 
         nextSection.material = material;
+        nextSection.textureMode = LineTextureMode.Tile;
         nextSection.startColor = lineColor;
         nextSection.endColor = lineColor;
         nextSection.sortingOrder = 10;
