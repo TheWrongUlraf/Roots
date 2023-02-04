@@ -1,13 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class TestScript : MonoBehaviour
+public class RootCollisionHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int layerPremission = 1;
+
+    private void HitDeadEnd()
     {
-        
+        SceneManager.LoadScene(0);
+    }
+
+    private void GotWater()
+    {
+        throw new NotImplementedException();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -15,6 +23,7 @@ public class TestScript : MonoBehaviour
         if (other.gameObject.tag == "Root")
         {
             Debug.Log("Collided with root");
+            HitDeadEnd();
         }
     }
 
@@ -24,18 +33,32 @@ public class TestScript : MonoBehaviour
         if (other.gameObject.tag == "Layer1Ground")
         {
             Debug.Log("Entered ground layer 1");
+            if (layerPremission < 1)
+            {
+                HitDeadEnd();
+            }
         }
         else if (other.gameObject.tag == "Layer2Ground")
         {
             Debug.Log("Entered ground layer 2");
+            if (layerPremission < 2)
+            {
+                HitDeadEnd();
+            }
         }
         else if (other.gameObject.tag == "Layer3Ground")
         {
             Debug.Log("Entered ground layer 3");
+            if (layerPremission < 2)
+            {
+                HitDeadEnd();
+            }
         }
         else if (other.gameObject.tag == "Water")
         {
             Debug.Log("Yummy yummy");
+            GotWater();
         }
     }
+
 }

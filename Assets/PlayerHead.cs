@@ -15,11 +15,11 @@ public class PlayerHead : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Vector3 curRootPos = PlayerRoot.curSection.GetPosition(PlayerRoot.curSection.positionCount - 1);
 
-        rigid.MovePosition(new Vector3(curRootPos.x, curRootPos.y, transform.position.z));
-        //transform.position = new Vector3(curRootPos.x, curRootPos.y, transform.position.z);
+        //rigid.MovePosition(new Vector3(curRootPos.x, curRootPos.y, transform.position.z));
+        transform.position = new Vector3(curRootPos.x, curRootPos.y, transform.position.z);
     }
 }
