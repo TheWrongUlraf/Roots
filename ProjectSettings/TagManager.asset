@@ -9,6 +9,7 @@ TagManager:
   - Layer3Ground
   - Water
   - Root
+  - ScreenZone
   layers:
   - Default
   - TransparentFX

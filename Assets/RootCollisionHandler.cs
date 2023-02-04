@@ -126,5 +126,10 @@ public class RootCollisionHandler : MonoBehaviour
             Debug.Log("Exit ground layer 1 up");
             HitDeadEnd();
         }
+        else if (other.gameObject.tag == "ScreenZone")
+        {
+            Debug.Log("Exit the allowed screen zone");
+            HitDeadEnd();
+        }
     }
 }
