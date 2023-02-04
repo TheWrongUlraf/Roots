@@ -18,7 +18,7 @@ public class RootCollisionHandler : MonoBehaviour
         {
             PlayerRoot.isRunning = false;
         }
-        PlayerRoot = Instantiate(PlayerRootPrefab, new Vector3(UnityEngine.Random.Range(-70, 70), 0, 0), Quaternion.identity);
+        PlayerRoot = Instantiate(PlayerRootPrefab, new Vector3(UnityEngine.Random.Range(-70, 50), 0, 0), Quaternion.identity);
         playerHead = GetComponent<PlayerHead>();
         playerHead.PlayerRoot = PlayerRoot;
     }
@@ -78,6 +78,7 @@ public class RootCollisionHandler : MonoBehaviour
         else if (other.gameObject.tag == "Water")
         {
             Debug.Log("Yummy yummy");
+            Destroy(other.gameObject);
             GotWater();
         }
         else

@@ -28,7 +28,7 @@ public class PlayerRoot : MonoBehaviour
     void Start()
     {
         width = 0.75f;
-        holeSpacing = width * 1.75f;
+        holeSpacing = width * 2.25f;
         fullSpacing = holeSpacing * 5;
 
         Vector3 startPoint = transform.position;
