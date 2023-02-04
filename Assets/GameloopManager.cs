@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameloopManager : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class GameloopManager : MonoBehaviour
     public List<Water> level2Water;
     public List<Water> level3Water;
 
-    RootCollisionHandler player;
+    public List<Material> levelsMaterials;
+
+    public RootCollisionHandler player;
+
+    public UnityEvent onWin;
 
     public void RemoveWater(Water water)
     {
@@ -18,6 +23,22 @@ public class GameloopManager : MonoBehaviour
         level3Water.Remove(water);
 
         CheckNewPermission();
+    }
+
+    public void Start()
+    {
+        for (int i = 1; i < levelsMaterials.Count; i++)
+        {
+            levelsMaterials[i].color = Color.black;
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Won();
+        }
     }
 
     private void CheckNewPermission()
@@ -31,13 +52,13 @@ public class GameloopManager : MonoBehaviour
                 }
                 break;
             case 2:
-                if (level2Water.Count == 0)
+                if (level2Water.Count != 0)
                 {
                     return;
                 }
                 break;
             case 3:
-                if (level3Water.Count == 0)
+                if (level3Water.Count != 0)
                 {
                     return;
                 }
@@ -46,6 +67,8 @@ public class GameloopManager : MonoBehaviour
 
         // make the player move up a single permission
         player.layerPremission++;
+        levelsMaterials[player.layerPremission - 1].color = Color.white;
+
 
         if (player.layerPremission == 4)
         {
@@ -55,6 +78,7 @@ public class GameloopManager : MonoBehaviour
 
     private void Won()
     {
-        throw new NotImplementedException("CONGRATS");
+        player.StopPlaying();
+        onWin.Invoke();
     }
 }

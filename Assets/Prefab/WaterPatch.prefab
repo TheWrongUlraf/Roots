@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232067711203190109}
   - component: {fileID: 4413074851107243173}
+  - component: {fileID: 7670108338983091217}
   - component: {fileID: 5443435276287886236}
   - component: {fileID: 5242611983376281562}
   - component: {fileID: 4450294056704725951}
@@ -52,6 +53,20 @@ MonoBehaviour:
   maxSizeMultiplayer: 1.1
   timePerBeat: 5
   ease: 2
+--- !u!114 &7670108338983091217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3034022804976178274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75b45fd089aa9246934d7624fccbf04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDisapear: 2
+  ease: 0
 --- !u!1971053207 &5443435276287886236
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0

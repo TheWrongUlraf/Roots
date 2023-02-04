@@ -97,6 +97,11 @@ public class RootCollisionHandler : MonoBehaviour
         }
     }
 
+    public void StopPlaying()
+    {
+        PlayerRoot.isRunning = false;
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Layer1Ground" && playerHead.transform.position.y >= groundLevel.position.y)
