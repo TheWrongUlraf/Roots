@@ -32,7 +32,7 @@ public class RootCollisionHandler : MonoBehaviour
     }
     private void SpawnRoot()
     {
-        var location = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), spawnLeft.position.y, 0);
+        var location = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), groundLevel.position.y, 0);
         Instantiate(TreePrefab, location, Quaternion.identity);
         PlayerRoot = Instantiate(PlayerRootPrefab, location, Quaternion.identity);
         playerHead = GetComponent<PlayerHead>();
