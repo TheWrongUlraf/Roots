@@ -94,6 +94,13 @@ public class RootCollisionHandler : MonoBehaviour
             Debug.Log("Collided with root");
             other.gameObject.GetComponent<LineRenderer>().material.color = new Color(1,1,1,0.2f);
             other.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+
+            PlayerRoot.curSection.material.color = new Color(1, 1, 1, 0.2f);
+            var poligon = PlayerRoot.curSection.gameObject.GetComponent<PolygonCollider2D>();
+            if (poligon)
+            {
+                poligon.enabled = false;
+            }
             HitDeadEnd();
         }
         else if (other.gameObject.tag == "Layer1Ground")
