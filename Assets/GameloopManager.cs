@@ -42,6 +42,17 @@ public class GameloopManager : MonoBehaviour
         {
             SetAllMaterialByOriginalMaterial(levelsMaterials[i], Color.black);
         }
+
+        SetWater(level2Water, false);
+        SetWater(level3Water, false);
+    }
+
+    private void SetWater(List<Water> waters, bool enabled)
+    {
+        foreach(Water w in waters)
+        {
+            w.gameObject.SetActive(enabled);
+        }
     }
 
     private List<Material> _allMaterial = new List<Material>();
@@ -85,12 +96,14 @@ public class GameloopManager : MonoBehaviour
                 {
                     return;
                 }
+                SetWater(level2Water, true);
                 break;
             case 2:
                 if (level2Water.Count != 0)
                 {
                     return;
                 }
+                SetWater(level3Water, true);
                 break;
             case 3:
                 if (level3Water.Count != 0)
