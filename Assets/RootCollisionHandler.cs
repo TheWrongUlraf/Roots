@@ -28,6 +28,7 @@ public class RootCollisionHandler : MonoBehaviour
     private void Start()
     {
         rootXs.Add(PlayerRoot.transform.position.x);
+        playerHead = GetComponent<PlayerHead>();
     }
 
     private void NewRoot()
@@ -61,10 +62,9 @@ public class RootCollisionHandler : MonoBehaviour
 
         Instantiate(TreePrefab, bestLocation, Quaternion.identity);
         PlayerRoot = Instantiate(PlayerRootPrefab, bestLocation, Quaternion.identity);
+        playerHead.PlayerRoot = PlayerRoot;
 
         rootXs.Add(bestLocation.x);
-        playerHead = GetComponent<PlayerHead>();
-        playerHead.PlayerRoot = PlayerRoot;
         int numOfRoots = int.Parse(textMeshPro.text);
         textMeshPro.text = (numOfRoots + 1).ToString();
 
