@@ -10,6 +10,7 @@ public class PlayerRoot : MonoBehaviour
 {
     public Material material;
     public LineRenderer curSection;
+    public Vector3 startPoint;
 
     float width;
     Color lineColor = new Color(99, 34, 16);
@@ -28,7 +29,7 @@ public class PlayerRoot : MonoBehaviour
         width = 0.75f;
         holeSpacing = width * 1.75f;
         fullSpacing = holeSpacing * 5;
-        curSection = CreateNextSection(Vector3.zero, new Vector3(0, -1, 0));
+        curSection = CreateNextSection(startPoint, startPoint + new Vector3(0, -1, 0));
     }
 
     void Update()
