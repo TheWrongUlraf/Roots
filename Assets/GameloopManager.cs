@@ -102,7 +102,7 @@ public class GameloopManager : MonoBehaviour
 
         // make the player move up a single permission
         player.layerPremission++;
-        if (player.layerPremission < levelsMaterials.Count)
+        if (player.layerPremission <= levelsMaterials.Count)
         {
             SetAllMaterialByOriginalMaterial(levelsMaterials[player.layerPremission - 1], Color.white);
             //levelsMaterials[player.layerPremission - 1].material.color = Color.white;
