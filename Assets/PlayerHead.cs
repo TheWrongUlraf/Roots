@@ -17,9 +17,12 @@ public class PlayerHead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 prevRootPos = PlayerRoot.curSection.GetPosition(PlayerRoot.curSection.positionCount - 2);
         Vector3 curRootPos = PlayerRoot.curSection.GetPosition(PlayerRoot.curSection.positionCount - 1);
 
-        rigid.position = new Vector3(curRootPos.x, curRootPos.y, transform.position.z);
-        //transform.position = new Vector3(curRootPos.x, curRootPos.y, transform.position.z);
+        Vector3 dir = (curRootPos - prevRootPos).normalized;
+
+        rigid.SetRotation(Quaternion.LookRotation(dir, Vector3.up));
+        rigid.MovePosition(curRootPos + (dir * 0.5f));
     }
 }
