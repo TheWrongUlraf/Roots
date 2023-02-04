@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.U2D;
 
 public class GameloopManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class GameloopManager : MonoBehaviour
     private List<Water> level2Water;
     private List<Water> level3Water;
 
-    public List<Material> levelsMaterials;
+    public List<SpriteShapeRenderer> levelsMaterials;
 
     public RootCollisionHandler player;
 
@@ -38,7 +39,7 @@ public class GameloopManager : MonoBehaviour
 
         for (int i = 1; i < levelsMaterials.Count; i++)
         {
-            levelsMaterials[i].color = Color.black;
+            levelsMaterials[i].material.color = Color.black;
         }
     }
 
@@ -76,7 +77,10 @@ public class GameloopManager : MonoBehaviour
 
         // make the player move up a single permission
         player.layerPremission++;
-        levelsMaterials[player.layerPremission - 1].color = Color.white;
+        if (player.layerPremission < levelsMaterials.Count)
+        {
+            levelsMaterials[player.layerPremission - 1].material.color = Color.white;
+        }
 
 
         if (player.layerPremission == 4)

@@ -28,7 +28,10 @@ public class RootCollisionHandler : MonoBehaviour
             StopPlaying();
             PlayerRoot.CreateCollider();
         }
-
+        SpawnRoot();
+    }
+    private void SpawnRoot()
+    {
         var location = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), spawnLeft.position.y, 0);
         Instantiate(TreePrefab, location, Quaternion.identity);
         PlayerRoot = Instantiate(PlayerRootPrefab, location, Quaternion.identity);
@@ -40,19 +43,27 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void Start()
     {
-        NewRoot();
+        SpawnRoot();
     }
 
     private void HitDeadEnd()
     {
-        NewRoot();
+        if (PlayerRoot != null)
+        {
+            StopPlaying();
+            PlayerRoot.CreateCollider();
+        }
+
+        GetComponent<AudioSource>().Play();
+        Invoke("SpawnRoot", 0.75f);
     }
 
     private void GotWater(Water water)
     {
         water.Drain();
         gm.RemoveWater(water);
-        NewRoot();
+
+        Invoke("NewRoot", 1f);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
