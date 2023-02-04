@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Layer1Ground
+  - Layer2Ground
+  - Layer3Ground
+  - Water
   layers:
   - Default
   - TransparentFX
