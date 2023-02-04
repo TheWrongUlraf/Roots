@@ -26,6 +26,7 @@ public class RootCollisionHandler : MonoBehaviour
         StopPlaying();
         SpawnRoot();
     }
+
     private void SpawnRoot()
     {
         StopPlaying();
@@ -67,6 +68,8 @@ public class RootCollisionHandler : MonoBehaviour
         if (other.gameObject.tag == "Root")
         {
             Debug.Log("Collided with root");
+            other.gameObject.GetComponent<LineRenderer>().material.color = new Color(1,1,1,0.2f);
+            other.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
             HitDeadEnd();
         }
         else if (other.gameObject.tag == "Layer1Ground")

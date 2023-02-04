@@ -69,7 +69,6 @@ public class PlayerRoot : MonoBehaviour
         }
         else if (!isHole && curHoleSpacing >= fullSpacing)
         {
-            isHole = true;
             curHoleSpacing = 0;
 
             var nextSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
@@ -78,6 +77,7 @@ public class PlayerRoot : MonoBehaviour
             CreateCollider();
             curSection = nextSection;
             curSection.enabled= false;
+            isHole = true;
         }
     }
 
