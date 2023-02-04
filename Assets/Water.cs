@@ -13,16 +13,18 @@ public class Water : MonoBehaviour
     public void Drain()
     {
         StartCoroutine(Disappear());
+        GetComponent<AudioSource>().Play();
     }
 
     private IEnumerator Disappear()
     {
+        var startScale = transform.localScale.x;
         while (timeSinceDrained < timeToDisapear)
         {
             timeSinceDrained += Time.deltaTime;
 
             EasingFunction.Function easeFunc = EasingFunction.GetEasingFunction(ease);
-            transform.localScale = easeFunc(1, 0, timeSinceDrained / timeToDisapear) * new Vector3(1, 1, 1);
+            transform.localScale = easeFunc(startScale, 0, timeSinceDrained / timeToDisapear) * new Vector3(1, 1, 1);
 
             yield return null;
         }

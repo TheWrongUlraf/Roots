@@ -115,7 +115,7 @@ public class PlayerRoot : MonoBehaviour
 
         return lastLine;
     }
-    private void CreateCollider()
+    public void CreateCollider()
     {
         PolygonCollider2D polyCollider = curSection.AddComponent<PolygonCollider2D>();
         polyCollider.CreateMesh(true, true);

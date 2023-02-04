@@ -23,7 +23,8 @@ public class RootCollisionHandler : MonoBehaviour
     {
         if (PlayerRoot != null)
         {
-            PlayerRoot.isRunning = false;
+            StopPlaying();
+            PlayerRoot.CreateCollider();
         }
 
         var location = new Vector3(UnityEngine.Random.Range(-70, 50), 0, 0);
