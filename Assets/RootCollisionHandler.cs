@@ -12,6 +12,8 @@ public class RootCollisionHandler : MonoBehaviour
     public int layerPremission = 1;
     public TextMeshProUGUI textMeshPro;
 
+    public Transform groundLevel;
+
     PlayerRoot PlayerRoot;
     PlayerHead playerHead;
 
@@ -95,4 +97,12 @@ public class RootCollisionHandler : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Layer1Ground" && playerHead.transform.position.y >= groundLevel.position.y)
+        {
+            Debug.Log("Exit ground layer 1 up");
+            HitDeadEnd();
+        }
+    }
 }
