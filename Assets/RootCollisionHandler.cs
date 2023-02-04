@@ -14,6 +14,8 @@ public class RootCollisionHandler : MonoBehaviour
 
     public Transform groundLevel;
 
+    public GameloopManager gm;
+
     PlayerRoot PlayerRoot;
     PlayerHead playerHead;
 
@@ -43,8 +45,10 @@ public class RootCollisionHandler : MonoBehaviour
         NewRoot();
     }
 
-    private void GotWater()
+    private void GotWater(Water water)
     {
+        water.Drain();
+        gm.RemoveWater(water);
         NewRoot();
     }
 
@@ -88,8 +92,7 @@ public class RootCollisionHandler : MonoBehaviour
         else if (other.gameObject.tag == "Water")
         {
             Debug.Log("Yummy yummy");
-            Destroy(other.gameObject);
-            GotWater();
+            GotWater(other.GetComponent<Water>());
         }
         else
         {
