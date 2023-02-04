@@ -15,7 +15,7 @@ public class GameloopManager : MonoBehaviour
     private List<Water> level2Water;
     private List<Water> level3Water;
 
-    public List<SpriteShapeRenderer> levelsMaterials;
+    public List<Material> levelsMaterials;
 
     public RootCollisionHandler player;
 
@@ -37,9 +37,34 @@ public class GameloopManager : MonoBehaviour
         level3Water = new List<Water>(level3Waters.GetComponentsInChildren<Water>());
 
 
+        CreateMatsList();
         for (int i = 1; i < levelsMaterials.Count; i++)
         {
-            levelsMaterials[i].material.color = Color.black;
+            SetAllMaterialByOriginalMaterial(levelsMaterials[i], Color.black);
+        }
+    }
+
+    private List<Material> _allMaterial = new List<Material>();
+    private void CreateMatsList()
+    {
+        SpriteShapeRenderer[] spriteShapes = GetComponentsInChildren<SpriteShapeRenderer>();
+        foreach (SpriteShapeRenderer spriteShape in spriteShapes)
+        {
+            List<Material> mats = new List<Material>();
+            spriteShape.GetMaterials(mats);
+
+            _allMaterial.AddRange(mats);
+        }
+    }
+
+    private void SetAllMaterialByOriginalMaterial(Material ogMat, Color newColor)
+    {
+        foreach (Material mat in _allMaterial)
+        {
+            if (mat.name.Contains(ogMat.name))
+            {
+                mat.color = newColor;
+            }
         }
     }
 
@@ -79,7 +104,8 @@ public class GameloopManager : MonoBehaviour
         player.layerPremission++;
         if (player.layerPremission < levelsMaterials.Count)
         {
-            levelsMaterials[player.layerPremission - 1].material.color = Color.white;
+            SetAllMaterialByOriginalMaterial(levelsMaterials[player.layerPremission - 1], Color.white);
+            //levelsMaterials[player.layerPremission - 1].material.color = Color.white;
         }
 
 
