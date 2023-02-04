@@ -6,9 +6,13 @@ using UnityEngine.Events;
 
 public class GameloopManager : MonoBehaviour
 {
-    public List<Water> level1Water;
-    public List<Water> level2Water;
-    public List<Water> level3Water;
+    public GameObject level1Waters;
+    public GameObject level2Waters;
+    public GameObject level3Waters;
+
+    private List<Water> level1Water;
+    private List<Water> level2Water;
+    private List<Water> level3Water;
 
     public List<Material> levelsMaterials;
 
@@ -27,6 +31,11 @@ public class GameloopManager : MonoBehaviour
 
     public void Start()
     {
+        level1Water = new List<Water>(level1Waters.GetComponentsInChildren<Water>());
+        level2Water = new List<Water>(level2Waters.GetComponentsInChildren<Water>());
+        level3Water = new List<Water>(level3Waters.GetComponentsInChildren<Water>());
+
+
         for (int i = 1; i < levelsMaterials.Count; i++)
         {
             levelsMaterials[i].color = Color.black;

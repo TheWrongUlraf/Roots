@@ -13,6 +13,8 @@ public class RootCollisionHandler : MonoBehaviour
     public TextMeshProUGUI textMeshPro;
 
     public Transform groundLevel;
+    public Transform spawnLeft;
+    public Transform spawnRight;
 
     public GameloopManager gm;
 
@@ -27,7 +29,7 @@ public class RootCollisionHandler : MonoBehaviour
             PlayerRoot.CreateCollider();
         }
 
-        var location = new Vector3(UnityEngine.Random.Range(-70, 50), 0, 0);
+        var location = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), spawnLeft.position.y, 0);
         Instantiate(TreePrefab, location, Quaternion.identity);
         PlayerRoot = Instantiate(PlayerRootPrefab, location, Quaternion.identity);
         playerHead = GetComponent<PlayerHead>();
