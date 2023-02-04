@@ -32,7 +32,7 @@ public class PlayerRoot : MonoBehaviour
         fullSpacing = holeSpacing * 5;
 
         Vector3 startPoint = transform.position;
-        curSection = CreateNextSection(startPoint, startPoint + new Vector3(0, -1, 0));
+        curSection = CreateNextSection(startPoint, startPoint + (Quaternion.AngleAxis(UnityEngine.Random.Range(-30f, 30f), Vector3.forward) * (new Vector3(0, -1, 0))));
     }
 
     void FixedUpdate()

@@ -23,15 +23,13 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void NewRoot()
     {
-        if (PlayerRoot != null)
-        {
-            StopPlaying();
-            PlayerRoot.CreateCollider();
-        }
+        StopPlaying();
         SpawnRoot();
     }
     private void SpawnRoot()
     {
+        StopPlaying();
+
         var location = new Vector3(UnityEngine.Random.Range(spawnLeft.position.x, spawnRight.position.x), groundLevel.position.y, 0);
         Instantiate(TreePrefab, location, Quaternion.identity);
         PlayerRoot = Instantiate(PlayerRootPrefab, location, Quaternion.identity);
@@ -39,6 +37,8 @@ public class RootCollisionHandler : MonoBehaviour
         playerHead.PlayerRoot = PlayerRoot;
         int numOfRoots = int.Parse(textMeshPro.text);
         textMeshPro.text = (numOfRoots + 1).ToString();
+
+        Invoke("StartPlaying", 0.5f);
     }
 
     private void Start()
@@ -48,12 +48,7 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void HitDeadEnd()
     {
-        if (PlayerRoot != null)
-        {
-            StopPlaying();
-            PlayerRoot.CreateCollider();
-        }
-
+        StopPlaying();
         GetComponent<AudioSource>().Play();
         Invoke("SpawnRoot", 0.75f);
     }
@@ -64,11 +59,6 @@ public class RootCollisionHandler : MonoBehaviour
         gm.RemoveWater(water);
 
         Invoke("NewRoot", 1f);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        
     }
 
     // Update is called once per frame
@@ -114,9 +104,18 @@ public class RootCollisionHandler : MonoBehaviour
         }
     }
 
+    public void StartPlaying()
+    {
+        PlayerRoot.isRunning = true;
+    }
+
     public void StopPlaying()
     {
-        PlayerRoot.isRunning = false;
+        if (PlayerRoot != null)
+        {
+            PlayerRoot.isRunning = false;
+            PlayerRoot.CreateCollider();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
