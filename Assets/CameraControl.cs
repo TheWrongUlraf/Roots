@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 curRootPos = PlayerRoot.lineRenderer.GetPosition(PlayerRoot.lineRenderer.positionCount - 1);
+        Vector3 curRootPos = PlayerRoot.curSection.GetPosition(PlayerRoot.curSection.positionCount - 1);
         transform.position = new Vector3(curRootPos.x, curRootPos.y, transform.position.z);
     }
 }
