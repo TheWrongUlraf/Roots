@@ -16,6 +16,7 @@ public class PlayerRoot : MonoBehaviour
 
     float rotationSpeed = 3f;
     float moveSpeed = 50f;
+    float tolarance = 0.025f;
 
     bool isHole = false;
     float holeSpacing;
@@ -62,10 +63,13 @@ public class PlayerRoot : MonoBehaviour
             isHole = true;
             curHoleSpacing = 0;
 
+            var nextSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
+
+            curSection.Simplify(tolarance);
             EdgeCollider2D edgeCollider = curSection.AddComponent<EdgeCollider2D>();
             edgeCollider.CreateMesh(true, true);
 
-            curSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
+            curSection = nextSection;
             curSection.enabled= false;
         }
     }
