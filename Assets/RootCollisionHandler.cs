@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RootCollisionHandler : MonoBehaviour
 {
     public PlayerRoot PlayerRootPrefab;
+    public GameObject TreePrefab;
     public int layerPremission = 1;
+    public TextMeshProUGUI textMeshPro;
 
     PlayerRoot PlayerRoot;
     PlayerHead playerHead;
@@ -18,9 +21,14 @@ public class RootCollisionHandler : MonoBehaviour
         {
             PlayerRoot.isRunning = false;
         }
-        PlayerRoot = Instantiate(PlayerRootPrefab, new Vector3(UnityEngine.Random.Range(-70, 50), 0, 0), Quaternion.identity);
+
+        var location = new Vector3(UnityEngine.Random.Range(-70, 50), 0, 0);
+        Instantiate(TreePrefab, location, Quaternion.identity);
+        PlayerRoot = Instantiate(PlayerRootPrefab, location, Quaternion.identity);
         playerHead = GetComponent<PlayerHead>();
         playerHead.PlayerRoot = PlayerRoot;
+        int numOfRoots = int.Parse(textMeshPro.text);
+        textMeshPro.text = (numOfRoots + 1).ToString();
     }
 
     private void Start()
