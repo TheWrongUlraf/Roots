@@ -64,7 +64,7 @@ public class PlayerRoot : MonoBehaviour
             curHoleSpacing = 0;
 
             LineRenderer newSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
-            Destroy(curSection.gameObject);
+            //Destroy(curSection.gameObject);
             curSection = newSection;
         }
         else if (!isHole && curHoleSpacing >= fullSpacing)
