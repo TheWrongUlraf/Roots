@@ -27,7 +27,7 @@ public class PlayerRoot : MonoBehaviour
 
     void Start()
     {
-        width = 0.75f;
+        width = 1f;
         holeSpacing = width * 2.25f;
         fullSpacing = holeSpacing * 5;
 

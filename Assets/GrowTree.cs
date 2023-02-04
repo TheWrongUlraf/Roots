@@ -10,7 +10,7 @@ public class GrowTree : MonoBehaviour
     void Start()
     {
         transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-        maxSize = UnityEngine.Random.Range(0.75f, 1f);
+        maxSize = UnityEngine.Random.Range(0.25f, 1f);
     }
 
     // Update is called once per frame
