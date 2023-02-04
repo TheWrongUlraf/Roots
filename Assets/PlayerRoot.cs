@@ -117,6 +117,11 @@ public class PlayerRoot : MonoBehaviour
     }
     public void CreateCollider()
     {
+        if(isHole)
+        {
+            return;
+        }
+
         PolygonCollider2D polyCollider = curSection.AddComponent<PolygonCollider2D>();
         polyCollider.CreateMesh(true, true);
         polyCollider.isTrigger = true;

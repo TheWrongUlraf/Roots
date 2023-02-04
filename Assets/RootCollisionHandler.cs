@@ -18,7 +18,7 @@ public class RootCollisionHandler : MonoBehaviour
 
     public GameloopManager gm;
 
-    PlayerRoot PlayerRoot;
+    public PlayerRoot PlayerRoot;
     PlayerHead playerHead;
 
     private void NewRoot()
@@ -43,7 +43,7 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void Start()
     {
-        SpawnRoot();
+        //SpawnRoot();
     }
 
     private void HitDeadEnd()
