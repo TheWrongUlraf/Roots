@@ -15,7 +15,7 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void GotWater()
     {
-        throw new NotImplementedException();
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)

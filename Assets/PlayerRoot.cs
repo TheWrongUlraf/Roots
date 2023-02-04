@@ -29,6 +29,8 @@ public class PlayerRoot : MonoBehaviour
         width = 0.75f;
         holeSpacing = width * 1.75f;
         fullSpacing = holeSpacing * 5;
+
+        Vector3 startPoint = transform.position;
         curSection = CreateNextSection(startPoint, startPoint + new Vector3(0, -1, 0));
     }
 
