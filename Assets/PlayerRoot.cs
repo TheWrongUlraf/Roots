@@ -34,7 +34,7 @@ public class PlayerRoot : MonoBehaviour
         curSection = CreateNextSection(startPoint, startPoint + new Vector3(0, -1, 0));
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 newAddition = GetNextAddition();
         curHoleSpacing += newAddition.magnitude;
@@ -69,18 +69,7 @@ public class PlayerRoot : MonoBehaviour
             var nextSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
 
             curSection.Simplify(tolarance);
-            PolygonCollider2D polyCollider = curSection.AddComponent<PolygonCollider2D>();
-            polyCollider.CreateMesh(true, true);
-            Vector2[] points = new Vector2[curSection.positionCount];
-            for (int i = 0; i < curSection.positionCount; i++)
-            {
-                points[i] = curSection.GetPosition(i);
-            }
-
-            polyCollider.points = points;
-            //EdgeCollider2D edgeCollider = curSection.AddComponent<EdgeCollider2D>();
-            //edgeCollider.CreateMesh(true, true);
-
+            CreateCollider();
             curSection = nextSection;
             curSection.enabled= false;
         }
@@ -117,5 +106,32 @@ public class PlayerRoot : MonoBehaviour
         lastLine *= step / lastLine.magnitude;
 
         return lastLine;
+    }
+    private void CreateCollider()
+    {
+        PolygonCollider2D polyCollider = curSection.AddComponent<PolygonCollider2D>();
+        polyCollider.CreateMesh(true, true);
+        Vector2[] points = new Vector2[curSection.positionCount * 2];
+        for (int i = 0; i < curSection.positionCount; i++)
+        {
+            Vector2 curPos = curSection.GetPosition(i);
+            Vector2 curDir;
+            if (i == 0)
+            {
+                Vector2 nextPos = curSection.GetPosition(i + 1);
+                curDir = nextPos - curPos;
+            }
+            else
+            {
+                Vector2 prevPos = curSection.GetPosition(i - 1);
+                curDir = curPos - prevPos;
+            }
+
+            Vector2 offset = (Quaternion.Euler(0, 0, 90) * curDir).normalized * width / 2;
+            points[i] = curPos + offset;
+            points[curSection.positionCount * 2 - 1 - i] = curPos - offset;
+        }
+
+        polyCollider.points = points;
     }
 }
