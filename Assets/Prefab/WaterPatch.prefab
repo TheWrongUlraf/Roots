@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1232067711203190109}
+  - component: {fileID: 4413074851107243173}
   - component: {fileID: 5443435276287886236}
   - component: {fileID: 5242611983376281562}
   - component: {fileID: 4450294056704725951}
@@ -35,6 +36,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4413074851107243173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3034022804976178274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89f0007c3abc0e47be16dd97efca317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSizeMultiplayer: 0.85
+  maxSizeMultiplayer: 1.1
+  timePerBeat: 5
+  ease: 2
 --- !u!1971053207 &5443435276287886236
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -45,7 +62,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -55,8 +72,8 @@ SpriteShapeRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fdc43de6e4077eb4e9bac817c26fa531, type: 2}
+  - {fileID: 2100000, guid: fdc43de6e4077eb4e9bac817c26fa531, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,14 +99,6 @@ SpriteShapeRenderer:
   m_ShapeTexture: {fileID: 2800000, guid: 5df5cf1f9e4b9514cb257491d418fd82, type: 3}
   m_Sprites:
   - {fileID: 21300000, guid: 5df5cf1f9e4b9514cb257491d418fd82, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
-  - {fileID: 21300000, guid: 2faf8a56082ea784fbf8845724ea5aaf, type: 3}
   m_LocalAABB:
     m_Center: {x: -2.963551, y: 0.37092018, z: 0}
     m_Extent: {x: 7.897119, y: 6.3427258, z: 0}
@@ -238,7 +247,7 @@ PolygonCollider2D:
       - {x: -10.842979, y: 2.061133}
       - {x: -10.751129, y: 2.4984777}
       - {x: -10.592579, y: 2.9071562}
-      - {x: -10.378149, y: 3.2838905}
+      - {x: -10.378149, y: 3.2838907}
       - {x: -10.118399, y: 3.6299977}
       - {x: -9.821763, y: 3.9496794}
       - {x: -9.494449, y: 4.248056}
@@ -264,35 +273,35 @@ PolygonCollider2D:
       - {x: 2.3356109, y: 3.4116983}
       - {x: 3.1587386, y: 3.2641366}
       - {x: 3.8284106, y: 3.069722}
-      - {x: 4.3554683, y: 2.8092747}
+      - {x: 4.3554688, y: 2.8092747}
       - {x: 4.758072, y: 2.4160943}
       - {x: 4.933568, y: 1.8695073}
       - {x: 4.819914, y: 1.3475654}
       - {x: 4.5579214, y: 0.96424973}
       - {x: 4.241408, y: 0.67079425}
       - {x: 3.8933897, y: 0.42368597}
-      - {x: 3.5277262, y: 0.20754421}
+      - {x: 3.5277262, y: 0.20754412}
       - {x: 3.1608722, y: 0.018918991}
-      - {x: 2.8113678, y: -0.14120054}
+      - {x: 2.8113678, y: -0.14120051}
       - {x: 2.2363613, y: -0.366184}
       - {x: 2.0388365, y: -0.42568052}
-      - {x: 1.6247461, y: -0.5124775}
+      - {x: 1.6247461, y: -0.51247764}
       - {x: 1.2709864, y: -0.5618428}
       - {x: 0.95578593, y: -0.580063}
       - {x: 0.6736381, y: -0.5712605}
       - {x: 0.20283978, y: -0.5029161}
-      - {x: -0.18317953, y: -0.42609832}
+      - {x: -0.18317953, y: -0.42609823}
       - {x: -0.612959, y: -0.3778344}
       - {x: -0.8937068, y: -0.37289998}
       - {x: -1.2407646, y: -0.38807988}
       - {x: -1.6677564, y: -0.42978275}
       - {x: -2.186832, y: -0.5043725}
-      - {x: -2.7586374, y: -0.6057744}
+      - {x: -2.7586374, y: -0.60577446}
       - {x: -3.01125, y: -0.69044185}
       - {x: -3.0950723, y: -0.77762854}
       - {x: -3.1490521, y: -0.9416851}
       - {x: -3.1647682, y: -1.23942}
-      - {x: -3.1163037, y: -1.6499207}
+      - {x: -3.1163037, y: -1.6499205}
       - {x: -3.0063877, y: -2.1315122}
       - {x: -2.8526564, y: -2.6493492}
       - {x: -2.5022874, y: -3.690901}
