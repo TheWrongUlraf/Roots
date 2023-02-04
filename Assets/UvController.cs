@@ -18,8 +18,15 @@ public class UvController : MonoBehaviour
     {
         mats = new List<Material>();
         spriteShapeRenderer = GetComponent<SpriteShapeRenderer>();
-
-        spriteShapeRenderer.GetMaterials(mats);
+        if (spriteShapeRenderer != null)
+        {
+            spriteShapeRenderer.GetMaterials(mats);
+        }
+        else
+        {
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            mats.Add(sr.material);
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +35,17 @@ public class UvController : MonoBehaviour
         offsetMainTexture += offsetSpeedMainTexture * Time.deltaTime;
         offsetBorderTexture += offsetSpeedBorderTexture * Time.deltaTime;
 
-        mats[0].SetTextureOffset("_MainTex", offsetMainTexture);
-        mats[1].SetTextureOffset("_MainTex", offsetBorderTexture);
+        if (spriteShapeRenderer)
+        {
+            mats[0].SetTextureOffset("_MainTex", offsetMainTexture);
+            mats[1].SetTextureOffset("_MainTex", offsetBorderTexture);
+        }
+        else
+        {
+            foreach(Material mat in mats)
+            {
+                mat.SetTextureOffset("_MainTex", offsetMainTexture);
+            }
+        }
     }
 }
