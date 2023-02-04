@@ -54,13 +54,18 @@ public class PlayerRoot : MonoBehaviour
             curHoleSpacing = 0;
 
             LineRenderer newSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
-            Destroy(curSection);
+            Destroy(curSection.gameObject);
             curSection = newSection;
         }
         else if (!isHole && curHoleSpacing >= fullSpacing)
         {
             isHole = true;
             curHoleSpacing = 0;
+
+            MeshCollider meshCollider = curSection.AddComponent<MeshCollider>();
+            Mesh mesh = new Mesh();
+            curSection.BakeMesh(mesh, true);
+            meshCollider.sharedMesh = mesh;
 
             curSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
             curSection.enabled= false;
