@@ -47,11 +47,11 @@ public class PlayerRoot : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            newAddition = Quaternion.Euler(0, 0, -Time.deltaTime * rotationSpeed * 50) * newAddition;
+            newAddition = Quaternion.Euler(0, 0, Time.deltaTime * rotationSpeed * 50) * newAddition;
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            newAddition = Quaternion.Euler(0, 0, Time.deltaTime * rotationSpeed * 50) * newAddition;
+            newAddition = Quaternion.Euler(0, 0, -Time.deltaTime * rotationSpeed * 50) * newAddition;
         }
 
         curSection.positionCount++;
