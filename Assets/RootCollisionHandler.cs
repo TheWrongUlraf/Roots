@@ -115,7 +115,7 @@ public class RootCollisionHandler : MonoBehaviour
         else if (other.gameObject.tag == "Layer3Ground")
         {
             Debug.Log("Entered ground layer 3");
-            if (layerPremission < 2)
+            if (layerPremission < 3)
             {
                 HitDeadEnd();
             }
