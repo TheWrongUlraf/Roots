@@ -10,7 +10,9 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void HitDeadEnd()
     {
-        SceneManager.LoadScene(0);
+        UnityEditor.EditorApplication.isPaused = true;
+
+        //SceneManager.LoadScene(0);
     }
 
     private void GotWater()

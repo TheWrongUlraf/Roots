@@ -69,8 +69,17 @@ public class PlayerRoot : MonoBehaviour
             var nextSection = CreateNextSection(curSection.GetPosition(posCount - 2), curSection.GetPosition(posCount - 1));
 
             curSection.Simplify(tolarance);
-            EdgeCollider2D edgeCollider = curSection.AddComponent<EdgeCollider2D>();
-            edgeCollider.CreateMesh(true, true);
+            PolygonCollider2D polyCollider = curSection.AddComponent<PolygonCollider2D>();
+            polyCollider.CreateMesh(true, true);
+            Vector2[] points = new Vector2[curSection.positionCount];
+            for (int i = 0; i < curSection.positionCount; i++)
+            {
+                points[i] = curSection.GetPosition(i);
+            }
+
+            polyCollider.points = points;
+            //EdgeCollider2D edgeCollider = curSection.AddComponent<EdgeCollider2D>();
+            //edgeCollider.CreateMesh(true, true);
 
             curSection = nextSection;
             curSection.enabled= false;
