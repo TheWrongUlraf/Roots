@@ -111,6 +111,7 @@ public class PlayerRoot : MonoBehaviour
     {
         PolygonCollider2D polyCollider = curSection.AddComponent<PolygonCollider2D>();
         polyCollider.CreateMesh(true, true);
+        polyCollider.isTrigger = true;
         Vector2[] points = new Vector2[curSection.positionCount * 2];
         for (int i = 0; i < curSection.positionCount; i++)
         {
