@@ -13,7 +13,7 @@ public class PlayerRoot : MonoBehaviour
     public Vector3 startPoint;
 
     float width;
-    Color lineColor = new Color(99, 34, 16);
+    public Color lineColor;
 
     float rotationSpeed = 3f;
     float moveSpeed = 50f;

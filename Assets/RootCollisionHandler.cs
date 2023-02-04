@@ -10,7 +10,7 @@ public class RootCollisionHandler : MonoBehaviour
 
     private void HitDeadEnd()
     {
-        UnityEditor.EditorApplication.isPaused = true;
+        //UnityEditor.EditorApplication.isPaused = true;
 
         //SceneManager.LoadScene(0);
     }
