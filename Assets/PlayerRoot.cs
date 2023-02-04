@@ -11,6 +11,7 @@ public class PlayerRoot : MonoBehaviour
     public Material material;
     public LineRenderer curSection;
     public Vector3 startPoint;
+    public bool isRunning = true;
 
     float width;
     public Color lineColor;
@@ -36,6 +37,11 @@ public class PlayerRoot : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!isRunning)
+        {
+            return;
+        }
+
         Vector3 newAddition = GetNextAddition();
         curHoleSpacing += newAddition.magnitude;
 

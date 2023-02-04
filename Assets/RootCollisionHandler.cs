@@ -6,18 +6,36 @@ using UnityEngine.SceneManagement;
 
 public class RootCollisionHandler : MonoBehaviour
 {
+    public PlayerRoot PlayerRootPrefab;
     public int layerPremission = 1;
+
+    PlayerRoot PlayerRoot;
+    PlayerHead playerHead;
+
+    private void NewRoot()
+    {
+        if (PlayerRoot != null)
+        {
+            PlayerRoot.isRunning = false;
+        }
+        PlayerRoot = Instantiate(PlayerRootPrefab, new Vector3(UnityEngine.Random.Range(-70, 70), 0, 0), Quaternion.identity);
+        playerHead = GetComponent<PlayerHead>();
+        playerHead.PlayerRoot = PlayerRoot;
+    }
+
+    private void Start()
+    {
+        NewRoot();
+    }
 
     private void HitDeadEnd()
     {
-        //UnityEditor.EditorApplication.isPaused = true;
-
-        //SceneManager.LoadScene(0);
+        NewRoot();
     }
 
     private void GotWater()
     {
-
+        NewRoot();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
