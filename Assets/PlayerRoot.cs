@@ -23,7 +23,7 @@ public class PlayerRoot : MonoBehaviour
     float fullSpacing;
     float curHoleSpacing = 0f;
 
-    void Start()
+    void Awake()
     {
         width = 1f;
         holeSpacing = width * 2.25f;
