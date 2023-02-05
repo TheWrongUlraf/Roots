@@ -120,7 +120,11 @@ public class PlayerRoot : MonoBehaviour
             return;
         }
 
-        PolygonCollider2D polyCollider = curSection.AddComponent<PolygonCollider2D>();
+        PolygonCollider2D polyCollider = curSection.GetComponent<PolygonCollider2D>();
+        if (!polyCollider)
+        {
+            polyCollider = curSection.AddComponent<PolygonCollider2D>();
+        }
         polyCollider.CreateMesh(true, true);
         polyCollider.isTrigger = true;
         Vector2[] points = new Vector2[curSection.positionCount * 2];
