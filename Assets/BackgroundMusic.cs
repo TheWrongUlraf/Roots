@@ -16,6 +16,13 @@ public class BackgroundMusic : MonoBehaviour
         source.clip = menuMusic;
         source.Play();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            source.mute= !source.mute;
+        }
+    }
 
     public void ChageToGameMusic()
     {
