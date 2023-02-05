@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerRoot : MonoBehaviour
 {
