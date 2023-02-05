@@ -83,6 +83,11 @@ public class RootCollisionHandler : MonoBehaviour
         water.Drain();
         gm.RemoveWater(water);
 
+        if (gm.isWon)
+        {
+            return;
+        }
+
         Invoke("NewRoot", 1f);
     }
 

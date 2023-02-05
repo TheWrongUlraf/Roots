@@ -32,6 +32,8 @@ public class GameloopManager : MonoBehaviour
 
     public void Start()
     {
+        isWon = false;
+
         level1Water = new List<Water>(level1Waters.GetComponentsInChildren<Water>());
         level2Water = new List<Water>(level2Waters.GetComponentsInChildren<Water>());
         level3Water = new List<Water>(level3Waters.GetComponentsInChildren<Water>());
@@ -56,6 +58,8 @@ public class GameloopManager : MonoBehaviour
     }
 
     private List<Material> _allMaterial = new List<Material>();
+    public bool isWon;
+
     private void CreateMatsList()
     {
         SpriteShapeRenderer[] spriteShapes = GetComponentsInChildren<SpriteShapeRenderer>();
@@ -79,13 +83,13 @@ public class GameloopManager : MonoBehaviour
         }
     }
 
-    //public void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        Won();
-    //    }
-    //}
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Won();
+        }
+    }
 
     private void CheckNewPermission()
     {
@@ -130,6 +134,7 @@ public class GameloopManager : MonoBehaviour
 
     private void Won()
     {
+        isWon = true;
         player.StopPlaying();
         onWin.Invoke();
     }
