@@ -83,13 +83,13 @@ public class GameloopManager : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Won();
-        }
-    }
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        Won();
+    //    }
+    //}
 
     private void CheckNewPermission()
     {
