@@ -12,7 +12,7 @@ public class GrowTree : MonoBehaviour
     {
         transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         maxSize = UnityEngine.Random.Range(0.5f, 1f);
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, Random.Range(-anglesAllowed * 3f, anglesAllowed)));
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, Random.Range(-anglesAllowed * 1.8f, anglesAllowed)));
     }
 
     // Update is called once per frame
